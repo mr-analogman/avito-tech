@@ -67,3 +67,8 @@ func GetAllSkills(skills: [String?]) -> String {
     
     return skillsStr
 }
+
+func SortEmployees(employees: [EmployeesStruct]) -> [EmployeesStruct] {
+    let employeesSorted = employees.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == ComparisonResult.orderedAscending }
+    return employeesSorted
+}

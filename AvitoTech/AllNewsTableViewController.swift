@@ -22,9 +22,12 @@ class AllNewsTableViewController: UITableViewController {
             switch result {
     
             case .success(let news):
+                employeesArr = news
                 self?.employeesArr1 = news
                 self?.tableView.reloadData()
-                employeesArr = news
+                
+                self?.employeesArr1?.company.employees = SortEmployees(employees: (employeesArr?.company.employees) ?? [])
+                
                 self?.navigationItem.title = (self?.employeesArr1?.company.name ?? "") + " employees"
 //                print(newsArr)
             case .failure(let error):
